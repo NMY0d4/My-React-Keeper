@@ -10,11 +10,9 @@ const App = () => {
 
     const [notesArr, setNotesArr] = useState(initialNotesArr);
 
-    const handleAddNote = (e, note) => {
-        e.preventDefault();
-        note.id = uuidv4();
-        console.log(note);
-        setNotesArr((prevNotesArr) => [...prevNotesArr, note]);
+    const handleAddNote = (newNote) => {
+        newNote.id = uuidv4();
+        setNotesArr((prevNotesArr) => [...prevNotesArr, newNote]);
     };
 
     const deleteNote = (id) => {

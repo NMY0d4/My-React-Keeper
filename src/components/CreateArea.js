@@ -13,14 +13,17 @@ function CreateArea({ handleAddNote }) {
         setNote((prevNote) => ({ ...prevNote, [name]: value }));
     };
 
+    const onSubmitHandler = (e) => {
+        e.preventDefault();
+        if (note.title && note.content) {
+            handleAddNote(note);
+            setNote(initialNote);
+        }
+    };
+
     return (
         <div>
-            <form
-                onSubmit={(e) => {
-                    handleAddNote(e, note);
-                    setNote(initialNote);
-                }}
-            >
+            <form onSubmit={onSubmitHandler}>
                 <input
                     onChange={handleChange}
                     name="title"
